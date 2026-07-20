@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Practical_2
 {
@@ -8,7 +8,7 @@ namespace Practical_2
         public string employeeName;
         public double basicSalary;
 
-        public virtual void AcceptDetails()
+        public void AcceptDetails()
         {
             Console.Write("Enter Employee ID: ");
             employeeId = Convert.ToInt32(Console.ReadLine());
@@ -19,28 +19,20 @@ namespace Practical_2
             Console.Write("Enter Basic Salary: ");
             basicSalary = Convert.ToDouble(Console.ReadLine());
         }
-
-        public virtual void CalculateSalary()
-        {
-        }
-
-        public virtual void DisplayDetails()
-        {
-        }
     }
 
     class FullTimeEmployee : Employee
     {
         double hra, da, grossSalary;
 
-        public override void CalculateSalary()
+        public void CalculateSalary()
         {
             hra = basicSalary * 0.20;
             da = basicSalary * 0.10;
             grossSalary = basicSalary + hra + da;
         }
 
-        public override void DisplayDetails()
+        public void DisplayDetails()
         {
             Console.WriteLine("\n===== Full-Time Employee =====");
             Console.WriteLine("Employee ID   : " + employeeId);
@@ -57,12 +49,12 @@ namespace Practical_2
     {
         double grossSalary;
 
-        public override void CalculateSalary()
+        public void CalculateSalary()
         {
             grossSalary = basicSalary;
         }
 
-        public override void DisplayDetails()
+        public void DisplayDetails()
         {
             Console.WriteLine("\n===== Half-Time Employee =====");
             Console.WriteLine("Employee ID   : " + employeeId);
@@ -75,6 +67,24 @@ namespace Practical_2
 
     class Program
     {
+        static void FullTime()
+        {
+            FullTimeEmployee emp = new FullTimeEmployee();
+
+            emp.AcceptDetails();
+            emp.CalculateSalary();
+            emp.DisplayDetails();
+        }
+
+        static void HalfTime()
+        {
+            HalfTimeEmployee emp = new HalfTimeEmployee();
+
+            emp.AcceptDetails();
+            emp.CalculateSalary();
+            emp.DisplayDetails();
+        }
+
         static void Main(string[] args)
         {
             int choice;
@@ -89,16 +99,14 @@ namespace Practical_2
 
                 choice = Convert.ToInt32(Console.ReadLine());
 
-                Employee emp = null;
-
                 switch (choice)
                 {
                     case 1:
-                        emp = new FullTimeEmployee();
+                        FullTime();
                         break;
 
                     case 2:
-                        emp = new HalfTimeEmployee();
+                        HalfTime();
                         break;
 
                     case 3:
@@ -108,13 +116,6 @@ namespace Practical_2
                     default:
                         Console.WriteLine("Invalid Choice!");
                         break;
-                }
-
-                if (emp != null)
-                {
-                    emp.AcceptDetails();
-                    emp.CalculateSalary();
-                    emp.DisplayDetails();
                 }
 
             } while (choice != 3);
