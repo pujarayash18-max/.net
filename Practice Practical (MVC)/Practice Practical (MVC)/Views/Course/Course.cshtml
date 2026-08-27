@@ -1,0 +1,14 @@
+﻿@model Practice_Practical__MVC_.Models.Course
+@{
+    ViewBag.Title = "Course";
+}
+@{
+    Layout = null;
+}
+<h2>Course-Details</h2>
+<p>Course Code: @Model.CourseID</p>
+<p>Coures Name :@Model.Course_Name</p>
+<p>Course Outcomes: @Html.Raw(Model.Course_Outcomes)</p>
+<br />
+<p>Course Credits:@Model.Course_Credits</p>
+
