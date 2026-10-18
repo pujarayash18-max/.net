@@ -1,0 +1,65 @@
+﻿@model Practical_7_original_.Models.Feedback
+
+@{
+    ViewBag.Title = "Student Feedback Form";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+</head>
+<body>
+
+    <h1>Student Feedback Form</h1>
+
+    @using (Html.BeginForm("Create", "Feedback", FormMethod.Post))
+    {
+        <div>
+            <label>Enrollment Number:</label>
+            @Html.TextBoxFor(m => m.EnrollmentNumber)
+        </div>
+
+        <br />
+
+        <div>
+            <label>Student Name:</label>
+            @Html.TextBoxFor(m => m.StudentName)
+        </div>
+
+        <br />
+
+        <div>
+            <label>Subject:</label>
+            @Html.TextBoxFor(m => m.Subject)
+        </div>
+
+        <br />
+
+        <div>
+            <label>Rating:</label>
+            @Html.TextBoxFor(m => m.Rating)
+        </div>
+
+        <br />
+
+        <div>
+            <label>Comments:</label>
+            @Html.TextAreaFor(m => m.Comment)
+        </div>
+
+        <br />
+
+        <button type="submit">
+            Submit Feedback
+        </button>
+    }
+
+    <br /><br />
+
+    <a href="@Url.Action("Index", "Feedback")">
+        Back to Home
+    </a>
+
+</body>
+</html>
