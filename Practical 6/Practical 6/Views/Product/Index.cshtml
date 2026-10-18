@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Practical_6.Models.Product>
+
+<h2>Product List</h2>
+
+<table border="1">
+    <tr>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Details</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.Category</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>
+                @Html.ActionLink(
+                    "Details",
+                    "Details",
+                    new { id = item.ProductId }
+                )
+            </td>
+        </tr>
+    }
+</table>
