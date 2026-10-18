@@ -1,0 +1,50 @@
+﻿@model List<Practical_7_original_.Models.Feedback>
+
+@{
+    ViewBag.Title = "Student Feedback";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback</title>
+</head>
+<body>
+
+    <h1>Student Feedback</h1>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Enrollment Number</th>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Rating</th>
+            <th>Comment</th>
+        </tr>
+
+        @foreach (var feedback in Model)
+        {
+            <tr>
+                <td>@feedback.EnrollmentNumber</td>
+                <td>@feedback.StudentName</td>
+                <td>@feedback.Subject</td>
+                <td>@feedback.Rating</td>
+                <td>@feedback.Comment</td>
+            </tr>
+        }
+    </table>
+
+    <br />
+
+    <a href="@Url.Action("Create", "Feedback")">
+        Give Another Feedback
+    </a>
+
+    <br /><br />
+
+    <a href="@Url.Action("Index", "Feedback")">
+        Go to Home
+    </a>
+
+</body>
+</html>
